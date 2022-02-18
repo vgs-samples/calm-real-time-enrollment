@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multiplexing Demo App</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" rel = "stylesheet" type="text/css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./css/prism.css">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+<div>
+  <nav class="bg-white shadow">
+    <div class="content-block mx-auto">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center">
+          <div class="flex-shrink-0">
+            <img class="h-8 w-60" src="static/icons/logo.svg" alt="Very Good Security">
+          </div>
+        </div>
+        <div class="flex items-center">
+          <a class="nav-link mr-4" target="_blank" href="https://www.verygoodsecurity.com/docs/overview">Documentation</a>
+          <a target="_blank" class="log-in-btn" href="https://dashboard.verygoodsecurity.com/">Log In</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <main class="py-6">
+    <div class="container max-w-3xl mx-auto">
+      <h1 class="text-lg leading-8 font-bold text-center text-gray-900">
+        VGS Payment Optimization Demo
+      </h1>
+
+      <p class="text-base leading-7 mt-4 text-gray-900">
+        VGS Payment Optimization allows you to increase acceptance and reduce processing costs. It is a cost effective,
+        drop-in solution for collecting and managing card data, routing authorizations, and providing tools and data to
+        generate optimized routes.
+      </p>
+      <p class="text-base leading-7 mt-4 text-gray-900">
+        This demo is built using VGS Universal Checkout and Multiplexing with example rule sets. It is for demonstration
+        purposes only; the full list of available parameters can be found in the
+        <a target="_blank" href="https://www.verygoodsecurity.com/docs/overview">documentation</a>.
+      </p>
+
+      <div id="tnt-alert">Please choose Vault</div>
+
+      <div class="tnt-form mt-10">
+        <form id="tenantForm" class="form-inline" onsubmit="event.preventDefault(); onSubmitTnt();">
+          <div class="form-group">
+            <div class="relative input-wrapper">
+              <div class="absolute top-0 left-0 p-2 flex items-center pointer-events-none">
+                <span class="text-xs input-label">Vault identifier</span>
+              </div>
+              <input type="text" name="tnt-id" id="tnt_id" value="" class="block w-full px-2">
+            </div>
+          </div>
+          <button class="btn" type="submit">Choose Vault</button>
+        </form>
+      </div>
+
+      <p class="text-base leading-7 font-bold mt-10 text-gray-900">Route rules:</p>
+      <div id="rules"></div>
+    </div>
+
+    <div class="multiplexing-container mx-auto">
+      <hr class="my-10">
+      <div class="flex-container justify-between stretch">
+        <div>
+          <div class="ant-card mb-6">
+            <div class="ant-card-head">
+              <div class="ant-card-head-wrapper">
+                <div class="ant-card-head-title text-base leading-7 font-bold">Transaction Details</div>
+                <div class="ant-card-extra">
+                  <select id="currency" onchange="setCurrencyIcon()">
+                    <option value="USD" selected>USD $</option>
+                    <option value="EUR">EUR &euro;</option>
+                    <option value="AED">AED &#x62f;&#x2e;&#x625;</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="ant-card-body p-4">
+              <div class="relative input-wrapper" id="amount-wrapper">
+                <div class="absolute top-0 left-0 p-2 flex items-center pointer-events-none">
+                  <span class="text-xs input-label">Transaction amount</span>
+                </div>
+                <span class="input-icon visible" id="usd">$</span>
+                <span class="input-icon" id="eur">&euro;</span>
+                <span class="input-icon" id="aed">&#x62f;&#x2e;&#x625;</span>
+                <input type="text" name="amount" id="amount" class=" block w-full pr-2 pl-6" placeholder="0.00">
+              </div>
+              <span id="error-message-amount" class="error-message"></span>
+            </div>
+          </div>
+          <div class="ant-card">
+            <div class="ant-card-head">
+              <div class="ant-card-head-wrapper">
+                <div class="ant-card-head-title text-base leading-7 font-bold">Payment Details</div>
+              </div>
+            </div>
+            <div class="ant-card-body p-4 flex flex-col items-center">
+              <p class="flex">
+                <i class="whitespace-nowrap">VGS Universal Checkout</i>
+                <img class="ml-2 inline" src="static/icons/icon.svg" alt="?" />
+              </p>
+              <div id="app"></div>
+            </div>
+          </div>
+        </div>
+        <div class="ant-card logs-card">
+          <div class="ant-card-head">
+            <div class="ant-card-head-wrapper">
+              <div class="ant-card-head-title text-base leading-7 font-bold">Transaction Log</div>
+              <div class="ant-card-extra">
+                <button class="btn" onclick="clearLogs('transactions')">Clear Log</button>
+              </div>
+            </div>
+          </div>
+          <div class="ant-card-body">
+            <div class="logs-table">
+              <table class="mt-2">
+                <thead class="logs-table-thead">
+                  <tr>
+                    <th class="ant-table-cell">Amount</th>
+                    <th class="ant-table-cell">Card Type</th>
+                    <th class="ant-table-cell">Status</th>
+                    <th class="ant-table-cell">Gateway</th>
+                    <th class="ant-table-cell">JSON</th>
+                  </tr>
+                </thead>
+
+                <tbody id="transactions" class="logs-table-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div id="logs-modal" class="logs-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close"></span>
+          <h2>Transaction Responses</h2>
+        </div>
+        <div id="modal-content" class="modal-body"></div>
+      </div>
+    </div>
+  </main>
+</div>
+  <script src="https://js.verygoodvault.com/vgs-checkout/beta-v1/checkout.umd.js"></script>
+  <script src="./js/prism.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+</html>

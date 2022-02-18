@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Account Updater Demo App</title>
+    <link href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet"/>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/antd/1.0.0/antd.min.css" rel="stylesheet"/>
+    <link href="/static/account_updater/css/index.css" rel="stylesheet"/>
+    <link href="https://static.verygoodsecurity.com/fonts/Averta/very-good-security.min.css" re="stylesheet"/>
+    <link rel="icon" href="{{ url_for('static', filename = 'favicon.ico') }}">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/imask/3.4.0/imask.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+<script src="/static/account_updater/js/index.js" type="module"></script>
+<nav class="bg-white shadow">
+    <div class="multiplexing-container mx-auto px-10">
+        <div class="flex items-center justify-between h-16 ">
+            <div class="flex items-center">
+                <div class="flex-shrink-0">
+                    <img alt="Very Good Security" class="h-8 w-60" src="/static/account_updater/assests/logo.svg"/>
+                </div>
+            </div>
+            <div class="flex items-center">
+                <a class="nav-link text-gray-900" href="https://www.verygoodsecurity.com/docs/payment-optimization/calm/api/api-docs"
+                   target="_blank">Documentation</a>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="demo-wrapper">
+    <div class="account-updater__wrapper">
+        <section class="__wrapper py-10 px-10">
+            <h1 class="leading-8 font-bold text-gray-900 mt-5 lg:mt-40 lg:mb-10 px-5">
+                Account Updater Demo
+            </h1>
+            <div class="account-updater__description-wrapper mx-auto mx-auto flex space-between flex-col-reverse lg:flex-row justify-between align-center">
+                <div class="lg:max-w-2xl p-5">
+                    <p class="text-base leading-7 mt-4">
+                        Account Updater is a service via the Card Networks that provides merchants
+                        and payment facilitators the ability to update their card on file with the latest information
+                        whenever a
+                        lifecycle event occurs including but not limited to expired cards or lost/stolen replacement.
+                    </p>
+                    <p class="text-base leading-7 mt-4">
+                        Using the form below, you can enter details for a card that has expired or been replaced due to
+                        being lost or damaged. After you submit the card data, you can see the new card information with
+                        some redactions
+                        on the right.
+                    </p>
+                </div>
+                <div class="account-updater__logo p-5 flex-col-reverse lg:flex-row flex items-center mt-10 lg:mt-0">
+                    <img src="/static/account_updater/assests/account-updater-logo.svg"/>
+                </div>
+            </div>
+        </section>
+        <div class="account-updater__form-container">
+            <div class="form-wrapper __wrapper px-10 lg:">
+                <div class="cards-container flex-container justify-between stretch flex-col lg:flex-row p-10 pb-20">
+                    <div class="origin-card">
+                        <div class="origin-card__title">
+                            <h4>Original card</h4>
+                        </div>
+                        <div class="card-body p-4 collect-form-body">
+                            <form id="collect-form" class="form-container">
+                                <div class="form-field-group">
+                                <div class="card-title">Card Details</div>
+                                <div class="input-container">
+                                    <label>Name on card</label>
+                                    <input id="name" maxlength="20" type="text">
+                                </div>
+                                <div class="input-container">
+                                    <label>Card number</label><span id="generatecard">generate random</span>
+                                    <input id="cardnumber" type="text" inputmode="numeric">
+                                    <svg id="ccicon" class="ccicon" width="750" height="471" viewBox="0 0 750 471" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    </svg>
+                                </div>
+                                <div class="input-container">
+                                    <label>Expiration Date</label>
+                                  <input id="expirationdate" type="text" inputmode="numeric">
+                                </div>
+                                <button class="form-button" type="submit">
+                                  <i aria-label="icon: loading" size="10" class="anticon spinner hidden anticon-loading tw-mx-auto tw-my-0"> </i>
+                                  Submit
+                                </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="updated-card">
+                        <div class="card-content-container">
+                            <div class="updated-card__title mt-10 lg:mt-0">
+                                <h4>Updated card</h4>
+                            </div>
+                            <div class="card-body updated collect-form-body">
+                                <div class="updated-wrapper collect-form-body">
+                                    <div class="message-wrapper">
+                                        <span class="status-message">Please enter card information on the left</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body p-4 retrieving hidden">
+                           <div class="loader__container">
+                                <i aria-label="icon: loading" size="120" class="anticon anticon-loading tw-mx-auto tw-my-0"> </i>
+                            </div>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
