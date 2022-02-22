@@ -1,0 +1,13 @@
+version: "3.3"
+
+services:
+  calm-real-time-enrollment:
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - "5000:5000"
+    environment:
+      ENVIRONMENT: "${ENVIRONMENT-sandbox}"
+      CALM_CLIENT_ID: "${CALM_CLIENT_ID}"
+      CALM_CLIENT_SECRET: "${CALM_CLIENT_SECRET}"

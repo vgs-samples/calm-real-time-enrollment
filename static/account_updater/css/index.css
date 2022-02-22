@@ -1,0 +1,549 @@
+@import url("https://static.verygoodsecurity.com/fonts/Averta/very-good-security.min.css");
+
+* {
+    box-sizing: border-box;
+}
+/*
+   Global styles
+ */
+html {
+    height: 100%;
+}
+
+body {
+    font-family: Inter, Averta, sans-serif;
+    font-size: 16px !important;
+    height: 100%;
+}
+
+a {
+    color: #145FF5;
+    font-weight: 500;
+    font-size: 16px;
+    display: inline;
+}
+
+img {
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+span {
+    color: #40545F;
+}
+
+/*
+    Global containers' styles
+ */
+
+.demo-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.cards-container {
+    margin-top: 60px;
+    border-radius: 24px;
+    background-size: cover;
+}
+
+.flex-container {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+}
+
+/*
+   Header's styles
+ */
+
+a.log-in-btn {
+    height: 32px;
+    font-weight: 500;
+    font-size: 16px;
+    display: flex;
+    border: 1px solid #145FF5;
+    color: #145FF5;
+    border-radius: 4px;
+    padding: 2px 16px 2px 32px;
+    background: url("/static/multiplexing/icons/profile.svg") no-repeat left transparent;
+    -webkit-appearance: none;
+    background-position-x: 10px;
+    cursor: pointer;
+}
+
+/*
+ Main content styles
+ */
+
+.account-updater__description {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: #171F27;
+    align-items: center
+}
+
+.description__title {
+    font-family: Averta;
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 130%;
+}
+
+.account-updater__form-container {
+    clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);;
+    padding-top: 60px;
+    margin-top: 125px;
+    padding-bottom: 80px;
+    height: fit-content;
+    background-color: #001A57;
+    position: relative;
+    overflow: auto;
+}
+
+/*
+   Form's styles
+ */
+
+form {
+    width: 300px;
+    font-family: Averta;
+}
+
+.form-field {
+    width: 100%;
+    height: 25px;
+    position: relative;
+    border-radius: 8px;
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+}
+
+h1 {
+    font-size: 40px;
+    font-family: 'Averta' !important;
+}
+
+.form-field-group {
+    display: flex;
+    flex-flow: wrap;
+}
+
+.form-button {
+    display: block;
+    font-family: Averta;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 170%;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+label {
+    color: white;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 170%;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+
+button[type="submit"] {
+    position: absolute;
+    bottom: 30px;
+    right: 0;
+    left: 0;
+    width: 100%;
+    max-width: 550px;
+    background: transparent;
+    border-radius: 4px;
+    padding: 5px;
+    color: white;
+    border: 1px solid white;
+    margin: 0 auto;
+}
+
+.__wrapper {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-wrapper {
+    margin: 0 auto;
+    padding-top: 10px;
+}
+
+@media (max-width: 1024px) {
+    .form-wrapper {
+        width: fit-content;
+    }
+}
+
+#collect-form {
+    width: 100%;
+    align-items: center;
+    border-radius: 24px;
+}
+
+.collect-form-body {
+    height: 80%;
+    display: flex;
+    align-items: center;
+}
+
+.form-field-group input {
+    background: transparent;
+    color: white;
+    font-size: 16px;
+    line-height: 27px;
+    opacity: 0.7;
+}
+
+.form-field-group input::placeholder {
+    color: white;
+    font-family: Inter, sand-serif;
+    font-size: 12px;
+    line-height: 170%;
+    opacity: 0.7;
+}
+
+.form-field-group input:focus-visible {
+    outline: none;
+}
+
+/*
+  Card styles
+ */
+
+.origin-card__title, .updated-card__title {
+    margin-bottom: 40px;
+    color: white;
+    font-size: 24px;
+    font-family: Averta;
+}
+
+
+.origin-card, .updated-card {
+    padding: 16px 16px 40px;
+    position: relative;
+}
+
+.origin-card .card-body,
+.updated-card .card-body {
+    width: 420px;
+    height: max-content;
+    background-image: url("../assests/card.svg");
+    background-size: cover;
+    padding: 15px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+}
+
+.origin-card .card-body > div {
+    margin-bottom: 8px;
+}
+
+.card-body {
+    border-radius: 20px;
+}
+
+.stretch {
+    -webkit-align-items: stretch;
+    align-items: stretch;
+}
+
+.card-title {
+    font-family: 'Inter';
+    font-weight: 600;
+    font-size: 14px;
+    color: white;
+    margin-top: 30px;
+}
+
+
+origin-card > .collect-form-body {
+    background: radial-gradient(53.84% 222.88% at 18.99% 50%, rgba(139, 16, 211, 0.5) 0%, rgba(0, 68, 204, 0.5) 100%);
+}
+
+.input-container {
+    width: 100%;
+    border-radius: 4px;
+    padding: 2px 4px;
+    margin: 2px 0;
+    font-size: 16px;
+}
+
+.input-container:nth-child(2) {
+    margin-top: 8px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.loader__container {
+    margin: 0 auto;
+}
+
+.loader__container i {
+    font-size: 120px;
+    color: white;
+}
+
+.unknown-response {
+    color: #000000;
+    font-weight: 600;
+}
+
+.redacted-card {
+    font-family: Roboto Mono;
+    margin-top: 13px;
+    background: #E1E6ED;
+    border: 1px solid #C8D0DB;
+    box-sizing: border-box;
+    border-radius: 8px 8px 0px 0px;
+    padding: 8px;
+}
+
+.redacted-card-title {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 170%;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #40545F;
+}
+
+.redacted-card-value {
+    font-size: 32px;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 170%;
+    color: white;
+}
+
+
+
+.status-message {
+    text-align: center;
+    color: #F9FAFB;
+    font-family: Averta;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 150%
+}
+
+.message-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* styles for updated card after form has been submitted */
+
+.updated-wrapper {
+    margin: auto;
+}
+
+.updated {
+    color: white;
+    padding: 30px 25px;
+    width: 420px;
+    background-image: url("../assests/card.svg");
+    background-size: cover;
+    border-radius: 20px;
+    min-height: 240px;
+    align-items: center;
+}
+
+.redacted-card__header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.redacted-card__main {
+    color: white;
+    margin-top: 10px;
+    height: 40px;
+    width: 100%;
+}
+
+.card-item__title, .card-item__info {
+    color: #FFFFFF;
+    opacity: 0.7;
+}
+
+.redacted-card__footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    justify-content: space-between;
+    height: 50%;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.card-data__item {
+    display: flex;
+    flex-direction: column;
+}
+
+.redacted-date {
+    background: #E1E6ED;
+    border: 1px solid #C8D0DB;
+    border-top: none;
+    box-sizing: border-box;
+    border-radius: 0px 0px 8px 8px;
+    padding: 8px;
+}
+
+.expiration-date-title {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 170%;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #40545F;
+}
+
+.card-item__img {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.failed {
+    flex-direction: column;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 50%;
+}
+
+.error-title {
+    font-size: 24px;
+    font-family: Averta;
+}
+
+.anticon-loading {
+    margin-right: 8px;
+}
+
+.retreiving {
+    min-height: 240px;
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.payment-title {
+    width: 100%;
+    text-align: center;
+}
+
+.form-container .field-container:first-of-type {
+    grid-area: name;
+}
+
+.form-container .field-container:nth-of-type(2) {
+    grid-area: number;
+}
+
+.form-container .field-container:nth-of-type(3) {
+    grid-area: expiration;
+}
+
+.form-container .field-container:nth-of-type(4) {
+    grid-area: security;
+}
+
+.field-container input {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.field-container {
+    position: relative;
+}
+
+.form-container {
+    display: grid;
+    grid-column-gap: 10px;
+    grid-template-columns: auto auto;
+    grid-template-rows: 90px 90px 90px;
+    grid-template-areas: "name name""number number";
+    max-width: 400px;
+    padding: 20px;
+    color: #707070;
+}
+
+input {
+    padding: 6px;
+    width: 100%;
+    border-radius: 3px;
+    border: 1px solid #dcdcdc;
+}
+
+.ccicon {
+    height: 62px;
+    position: absolute;
+    right: 52px;
+    top: calc(50% - 81px);
+    width: 60px;
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+    max-height: 251px;
+    height: 54vw;
+    padding: 20px;
+}
+
+#ccsingle {
+    position: absolute;
+    right: 15px;
+    top: 20px;
+}
+
+#ccsingle svg {
+    width: 100px;
+    max-height: 60px;
+}
+
+#generatecard{
+    cursor: pointer;
+    float: right;
+    font-size: 12px;
+    color: #fff;
+    padding: 2px 4px;
+    background-color: #909090;
+    border-radius: 4px;
+    cursor: pointer;
+    float:right;
+}
